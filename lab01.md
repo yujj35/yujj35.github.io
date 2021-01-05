@@ -1,32 +1,70 @@
 ---
 layout: default
-title: 遇见Visual Studio
+title: 遇见markdown
 ---
 
-# 遇见Visual Studio
+<font color=#999AAA >提示：文章写完后，目录可以自动生成，如何生成可参考右边的帮助文档
 
-听TA说，get到VS Code就可以获得除了JAVA以外的万能编辑器。   
-emmmm, 可是一直用编辑器也不是办法啊，有没有什么更智能的工具呢？  
-当然有啊，那就是同样微软出品的Visual Studio啦。  
-![](images/VS.png)   
-从名字上来看，VS和VS Code像是有扯不清的关系，但两者使用体验是千差万别.  
-相比于VS Code，VS是一款IDE，它集成了更多的功能。  
-并且值得一提的是，VS也提供了永久免费的版本，并且功能对于我们来说完全够用.  
-[点这传送到Visual Studio官网！](https://visualstudio.microsoft.com/zh-hans/)   
-找到合适版本下载即可   
-![](images/lab01_images/VS_Download.png)  
-安装后，通关installer（第一次打开，自动跳出）安装想要的功能（C/C++,Python,HTML等)。  
-![](images/lab01_images/VS_Install.png) 
-除了JAVA以外的大部分编程语言都可以在这找到。  
-安装完毕以后，点击创建新项目就可以开始编程了啦。 
-敲几行代码，点击上面的调试器，就可以运行了。 
-![](images/lab01_images/VS_Use.png) 
-![](images/lab01_images/VS_Run.png)  
-怎么样？是不是很简单？  
-附带几个常用的功能:  
-1. F5，调试。   
-2. F10， 单步调试。
-3. 左键点击行号左侧白条， 断点。  
- 更多精彩，等待你发现！
+</font>
 
- 
+@[TOC](文章目录)
+
+
+<hr style=" border:solid; width:100px; height:1px;" color=#000000 size=1">
+
+# 前言
+
+<font color=#999AAA >提示：这里可以添加本文要记录的大概内容：
+例如：随着人工智能的不断发展，机器学习这门技术也越来越重要，很多人都开启了学习机器学习，本文就介绍了机器学习的基础内容。</font>
+
+<hr style=" border:solid; width:100px; height:1px;" color=#000000 size=1">
+
+<font color=#999AAA >提示：以下是本篇文章正文内容，下面案例可供参考
+
+# 一、pandas是什么？
+
+
+<font color=#999AAA >示例：pandas 是基于NumPy 的一种工具，该工具是为了解决数据分析任务而创建的。
+
+
+
+# 二、使用步骤
+## 1.引入库
+
+
+<font color=#999AAA >代码如下（示例）：
+
+
+
+```c
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+import warnings
+warnings.filterwarnings('ignore')
+import  ssl
+ssl._create_default_https_context = ssl._create_unverified_context
+```
+
+## 2.读入数据
+
+<font color=#999AAA >代码如下（示例）：
+
+
+
+```c
+data = pd.read_csv(
+    'https://labfile.oss.aliyuncs.com/courses/1283/adult.data.csv')
+print(data.head())
+```
+
+
+
+<font color=#999AAA >该处使用的url网络请求的数据。
+
+<hr style=" border:solid; width:100px; height:1px;" color=#000000 size=1">
+
+# 总结
+<font color=#999AAA >提示：这里对文章进行总结：
+例如：以上就是今天要讲的内容，本文仅仅简单介绍了pandas的使用，而pandas提供了大量能使我们快速便捷地处理数据的函数和方法。

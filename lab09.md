@@ -3,7 +3,6 @@ layout: default
 title: 洗衣机算法设计
 ---
 # 洗衣机算法设计
-![](images\lab09_images\t0d.jpg)
 一般而言洗衣机分为“设定，注水，浸泡，漂洗，脱水，结束”几个过程，因此设计程序时也按照这个流程进行分解。  
 1. READ    waterLine，timeLine1, timeLine2 //读取用户设定  
 2. REPEAT //进行注水  

@@ -12,7 +12,7 @@ title: 智能蛇实验报告
 可以实现自动寻路
 ![](images\lab15_images\auto_snake.png)  
 ## 源码
-``
+```
 #include <stdio.h>
 #include <string.h>
 #include <sys/time.h>
@@ -314,4 +314,4 @@ int main()
                 tty_reset();
         return 0;
 }
-``
+```

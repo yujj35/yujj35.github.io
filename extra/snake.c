@@ -1,25 +1,18 @@
-//main.c
-//snake
-//
-//ÓÉÖĞÉ½´óÑ§17¼¶Èí¼ş¹¤³ÌÑÕÒÙºÀÍê³É
-//×îºó¸üĞÂÊ±¼ä2018-12-1/16:57
-
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
 
-//ºê¶¨ÒåÇø
+//å®å®šä¹‰åŒº
 #define SNAKE_MAX_LENGTH 20
 #define SNAKE_HEAD 'H'
 #define SNAKE_BODY 'X'
 #define BLANK_CELL ' '
 #define SNAKE_FOOD '$'
 #define WALL_CELL '*'
-#define	NEXT_PLACE (map[snakePlace[0][0]+addY][snakePlace[1][0]+addX])	//ÏÂÒ»¸öÎ»ÖÃµÄ×Ö·û
-#define PLACE(X) (map[snakePlace[0][X]][snakePlace[1][X]])				//µ±Ç°Î»ÖÃµÄ×Ö·û
+#define	NEXT_PLACE (map[snakePlace[0][0]+addY][snakePlace[1][0]+addX])	//ä¸‹ä¸€ä¸ªä½ç½®çš„å­—ç¬¦
+#define PLACE(X) (map[snakePlace[0][X]][snakePlace[1][X]])				//å½“å‰ä½ç½®çš„å­—ç¬¦
 
-//µØÍ¼
+//åœ°å›¾
 char map[12][12] = {
 	"************",
 	"*XXXXH     *",
@@ -35,21 +28,21 @@ char map[12][12] = {
 	"************"
 };
 
-//ÉßµÄÎ»ÖÃÓë³¤¶È
+//è›‡çš„ä½ç½®ä¸é•¿åº¦
 int snakePlace[2][SNAKE_MAX_LENGTH] = { {1,1,1,1,1},{5,4,3,2,1} };
 int snakeLength = 5;
 
-//ÒÆ¶¯ÓëÍÌÊ³,isFood==1Ôò½øĞĞÍÌÊ³
+//ç§»åŠ¨ä¸åé£Ÿ,isFood==1åˆ™è¿›è¡Œåé£Ÿ
 void snakeMove(int addX, int addY, int isFood);
-//²úÉúËæ»úÎ»ÖÃÊ³Îï
+//äº§ç”Ÿéšæœºä½ç½®é£Ÿç‰©
 void put_money(void);
-//·ÖÖ§Ñ¡ÔñÆ÷,·µ»Ø0ÔòÓÎÏ·½áÊø£¬·ñÔòÓÎÏ·¼ÌĞø
+//åˆ†æ”¯é€‰æ‹©å™¨,è¿”å›0åˆ™æ¸¸æˆç»“æŸï¼Œå¦åˆ™æ¸¸æˆç»§ç»­
 int judgeGameRun(int addX, int addY);
-//ÏÔÊ¾
+//æ˜¾ç¤º
 void output(void);
-//ÓÎÏ·½áÊø
+//æ¸¸æˆç»“æŸ
 void gameover(void);
-//¿ØÖÆÆ÷
+//æ§åˆ¶å™¨
 void operation(void);
 
 int main() {
@@ -60,32 +53,32 @@ int main() {
 	return 0;
 }
 
-//ÒÆ¶¯ÓëÍÌÊ³,isFood==1Ôò½øĞĞÍÌÊ³
+//ç§»åŠ¨ä¸åé£Ÿ,isFood==1åˆ™è¿›è¡Œåé£Ÿ
 void snakeMove(int addX, int addY, int isFood) {
 	int temp1;
 
-	//ÊÇ·ñÍÌÊ³
+	//æ˜¯å¦åé£Ÿ
 	if (!isFood)
 		PLACE(snakeLength - 1) = ' ';
 	else {
 		snakeLength++;
 	}
 
-	//·ÇÍ·²¿ÒÆ¶¯Óë×ø±ê±ä»¯
+	//éå¤´éƒ¨ç§»åŠ¨ä¸åæ ‡å˜åŒ–
 	PLACE(0) = SNAKE_BODY;
 	for (temp1 = snakeLength - 1;temp1 > 0;temp1--) {
 		snakePlace[0][temp1] = snakePlace[0][temp1 - 1];
 		snakePlace[1][temp1] = snakePlace[1][temp1 - 1];
 	}
 
-	//Í·²¿ÒÆ¶¯Óë×ø±ê±ä»¯
+	//å¤´éƒ¨ç§»åŠ¨ä¸åæ ‡å˜åŒ–
 	snakePlace[0][0] += addY;
 	snakePlace[1][0] += addX;
 	PLACE(0) = SNAKE_HEAD;
 
 }
 
-//²úÉúËæ»úÎ»ÖÃÊ³Îï
+//äº§ç”Ÿéšæœºä½ç½®é£Ÿç‰©
 void put_money(void) {
 	int x, y;
 	do {
@@ -95,19 +88,19 @@ void put_money(void) {
 	map[y][x] = SNAKE_FOOD;
 }
 
-//·ÖÖ§Ñ¡ÔñÆ÷,·µ»Ø0ÔòÓÎÏ·½áÊø£¬·ñÔòÓÎÏ·¼ÌĞø
+//åˆ†æ”¯é€‰æ‹©å™¨,è¿”å›0åˆ™æ¸¸æˆç»“æŸï¼Œå¦åˆ™æ¸¸æˆç»§ç»­
 int judgeGameRun(int addX, int addY) {
-	//Ê§°ÜÌõ¼ş
+	//å¤±è´¥æ¡ä»¶
 	if ((NEXT_PLACE == WALL_CELL) || (NEXT_PLACE == SNAKE_BODY)) {
 		printf("You fail!\n");
 		return 0;
 	}
 
-	//ÒÆ¶¯ÓëÍÌÊ³
+	//ç§»åŠ¨ä¸åé£Ÿ
 	if (NEXT_PLACE == SNAKE_FOOD) {
-		//½øĞĞÍÌÊ³
+		//è¿›è¡Œåé£Ÿ
 
-		//»ñÊ¤Ìõ¼ş
+		//è·èƒœæ¡ä»¶
 		if (snakeLength >= SNAKE_MAX_LENGTH) {
 			printf("The snake is full.\nYou win!\n");
 			return 0;
@@ -116,17 +109,17 @@ int judgeGameRun(int addX, int addY) {
 		snakeMove(addX, addY, 1);
 		put_money();
 	}
-	else //²»½øĞĞÍÌÊ³
+	else //ä¸è¿›è¡Œåé£Ÿ
 		snakeMove(addX, addY, 0);
 
 	return 1;
 }
 
-//ÏÔÊ¾
+//æ˜¾ç¤º
 void output(void) {
 	// system("clear"); linux
 	system("cls");//windos
-	printf("------------------------Ì°³ÔÉß-------------------------\n");
+	printf("------------------------è´ªåƒè›‡-------------------------\n");
 	int temp1, temp2;
 	for (temp1 = 0;temp1 < 12;temp1++) {
 		for (temp2 = 0;temp2 < 12;temp2++) {
@@ -136,12 +129,12 @@ void output(void) {
 	}
 }
 
-//ÓÎÏ·½áÊø
+//æ¸¸æˆç»“æŸ
 void gameover(void) {
 	printf("Game Over\n");
 }
 
-//¿ØÖÆÆ÷
+//æ§åˆ¶å™¨
 void operation(void) {
 	srand((int)time(0));
 	char op;
@@ -149,12 +142,12 @@ void operation(void) {
 	addX = addY = 0;
 
 	while (1) {
-		//µÃµ½²Ù×÷Âë
+		//å¾—åˆ°æ“ä½œç 
 		printf("Please input the operation(WASD/wasd): ");
 		scanf("%c", &op);
 		setbuf(stdin, NULL);
 
-		//½âÂë
+		//è§£ç 
 		switch (op)
 		{
 		case 'a':
@@ -184,7 +177,7 @@ void operation(void) {
 		if (addX == 0 && addY == 0)
 			continue;
 
-		//½øÈë·ÖÖ§
+		//è¿›å…¥åˆ†æ”¯
 		if (!judgeGameRun(addX, addY)) {
 			break;
 		}
